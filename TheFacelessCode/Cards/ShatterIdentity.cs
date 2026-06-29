@@ -21,7 +21,7 @@ public class ShatterIdentity() : TheFacelessCard(2,
         CardPlay play)
     {
         ShatterIdentity card = this;
-        await PowerCmd.Apply<OneWithNonsensePower>(choiceContext, card.Owner.Creature, DynamicVars.Power<ShatterIdentityPower>().BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ShatterIdentityPower>(choiceContext, card.Owner.Creature, DynamicVars.Power<ShatterIdentityPower>().BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
