@@ -1,0 +1,26 @@
+using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
+
+namespace TheFaceless.TheFacelessCode.Powers;
+
+public class HypochondriaPower : TheFacelessPower
+{
+	public override PowerType Type => (PowerType)1;
+
+	public override PowerStackType StackType => (PowerStackType)1;
+
+	public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+	{
+		HypochondriaPower hypochondriaPower = this;
+		if (((amount > 0m) & (applier == ((PowerModel)hypochondriaPower).Owner)) && power is Paranoia && power.Owner.IsEnemy && power.Owner.Monster != null && power.Owner.Monster.IntendsToAttack)
+		{
+			((PowerModel)hypochondriaPower).Flash();
+			await PowerCmd.Apply<WeakPower>(choiceContext, power.Owner, (decimal)((PowerModel)hypochondriaPower).Amount, ((PowerModel)hypochondriaPower).Owner, (CardModel)null, false);
+		}
+	}
+}

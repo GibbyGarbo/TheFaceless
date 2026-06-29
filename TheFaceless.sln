@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheFaceless", "TheFaceless.csproj", "{FD54B078-A54B-3BE5-104A-A30E16793D6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AnyCPU = Debug|AnyCPU
+		Release|AnyCPU = Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD54B078-A54B-3BE5-104A-A30E16793D6E}.Debug|AnyCPU.ActiveCfg = Debug|AnyCPU
+		{FD54B078-A54B-3BE5-104A-A30E16793D6E}.Debug|AnyCPU.Build.0 = Debug|AnyCPU
+		{FD54B078-A54B-3BE5-104A-A30E16793D6E}.Release|AnyCPU.ActiveCfg = Release|AnyCPU
+		{FD54B078-A54B-3BE5-104A-A30E16793D6E}.Release|AnyCPU.Build.0 = Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
