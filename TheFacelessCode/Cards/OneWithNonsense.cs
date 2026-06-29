@@ -25,7 +25,7 @@ public class OneWithNonsense : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		OneWithNonsense card = this;
-		await PowerCmd.Apply<OneWithNonsensePower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["OneWithNonsensePower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		await PowerCmd.Apply<OneWithNonsensePower>(choiceContext, card.Owner.Creature, this.DynamicVars["OneWithNonsensePower"].BaseValue, this.Owner.Creature, this);
 	}
 
 	protected override void OnUpgrade()
