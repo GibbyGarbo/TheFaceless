@@ -146,5 +146,7 @@
   "THEFACELESS-BAD_HABITS.description": "Whenever you apply [gold]Corruption[/gold] to an enemy gain {BadHabitsPower:diff()} Corruption.",
   "THEFACELESS-BAD_HABITS.title": "Bad Habits",
   "THEFACELESS-TERRORIZE.description": "Apply {Corruption:diff()} [gold]Corruption[/gold],\\n{Paranoia:diff()} [gold]Paranoia[/gold] and\\ndeal {Damage:diff()} damage X times.",
-  "THEFACELESS-TERRORIZE.title": "Terrorize"
+  "THEFACELESS-TERRORIZE.title": "Terrorize",
+  "THEFACELESS-SHATTER_IDENTITY.description": "When you apply a debuff to an enemy gain {ShatterIdentityPower:diff()} [gold]Block[/gold].",
+  "THEFACELESS-SHATTER_IDENTITY.title": "Shatter Identity"
 }
