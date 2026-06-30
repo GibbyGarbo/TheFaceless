@@ -14,10 +14,13 @@ public class Psychogenesis() : TheFacelessCard(1,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-    new PowerVar<PsychogenesisPower>(5)
+    new PowerVar<PsychogenesisPower>(9)
     ];
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<Paranoia>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+    [
+        HoverTipFactory.FromPower<Paranoia>()
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -29,6 +32,6 @@ public class Psychogenesis() : TheFacelessCard(1,
 
     protected override void OnUpgrade()
     {
-    DynamicVars.Power<PsychogenesisPower>().UpgradeValueBy(2);
+    DynamicVars.Power<PsychogenesisPower>().UpgradeValueBy(3);
     }
 }
