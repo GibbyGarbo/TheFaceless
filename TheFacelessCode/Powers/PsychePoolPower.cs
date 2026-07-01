@@ -3,9 +3,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheFaceless.TheFacelessCode.Powers;
@@ -27,7 +24,12 @@ public class PsychePoolPower : TheFacelessPower
       ICombatState combatState)
     {
         PsychePoolPower psychePoolPower = this;
-        int BlockPerTurn = PileType.Exhaust.GetPile(Owner.Player).Cards.Count;
-        await CreatureCmd.GainBlock(psychePoolPower.Owner, BlockPerTurn, ValueProp.Unpowered,  null);
+        if (Owner.Player != null)
+        {
+            if (!participants.Contains(psychePoolPower.Owner))
+                return;
+            int blockPerTurn = PileType.Exhaust.GetPile(Owner.Player).Cards.Count;
+            await CreatureCmd.GainBlock(psychePoolPower.Owner, blockPerTurn, ValueProp.Unpowered,  null);
+        }
     }
 }
