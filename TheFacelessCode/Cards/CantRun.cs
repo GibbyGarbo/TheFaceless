@@ -24,8 +24,8 @@ public class CantRun : TheFacelessCard
 		get
 		{
 			List<IHoverTip> list = new List<IHoverTip>();
-			list.Add(HoverTipFactory.FromKeyword((CardKeyword)1));
 			list.AddRange(HoverTipFactory.FromEnchantment<DejaVu>(1));
+			list.Add(HoverTipFactory.FromKeyword((CardKeyword)1));
 			return new List<IHoverTip>(list);
 		}
 	}

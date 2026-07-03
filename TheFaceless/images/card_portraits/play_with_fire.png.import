@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0kgwkgbfrnvg"
-path="res://.godot/imported/terrorize.png-ed3fd235950b111bfb04ee170b3e0712.ctex"
+path="res://.godot/imported/play_with_fire.png-5391857a64d1141e2e7dd4706c90f11a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TheFaceless/images/card_portraits/terrorize.png"
-dest_files=["res://.godot/imported/terrorize.png-ed3fd235950b111bfb04ee170b3e0712.ctex"]
+source_file="res://TheFaceless/images/card_portraits/play_with_fire.png"
+dest_files=["res://.godot/imported/play_with_fire.png-5391857a64d1141e2e7dd4706c90f11a.ctex"]
 
 [params]
 

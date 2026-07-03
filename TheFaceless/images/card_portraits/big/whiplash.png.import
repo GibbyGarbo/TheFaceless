@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djooo6yillpvv"
-path="res://.godot/imported/play_with_fire.png-1b3e0d551432e9e5aff6c4384fae81d1.ctex"
+uid="uid://8agnn1ey1rhw"
+path="res://.godot/imported/whiplash.png-039717c598258e341c689e699ceaefac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TheFaceless/images/card_portraits/big/play_with_fire.png"
-dest_files=["res://.godot/imported/play_with_fire.png-1b3e0d551432e9e5aff6c4384fae81d1.ctex"]
+source_file="res://TheFaceless/images/card_portraits/big/whiplash.png"
+dest_files=["res://.godot/imported/whiplash.png-039717c598258e341c689e699ceaefac.ctex"]
 
 [params]
 

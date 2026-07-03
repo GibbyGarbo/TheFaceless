@@ -18,17 +18,20 @@ public class Terrorize : TheFacelessCard
 
 	protected override IEnumerable<DynamicVar> CanonicalVars =>
 	[
-		(DynamicVar)new DamageVar(5m, (ValueProp)8),
-		(DynamicVar)new PowerVar<Corruption>(3m),
-		(DynamicVar)new PowerVar<Paranoia>(1m)
+		new DamageVar(5m, (ValueProp)8),
+		new PowerVar<Corruption>(3m),
+		new PowerVar<Paranoia>(1m)
 			];
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => 
 	[
-		HoverTipFactory.FromPower<Corruption>((int?)null),
-		HoverTipFactory.FromPower<Paranoia>((int?)null)
+		HoverTipFactory.FromPower<Corruption>(),
+		HoverTipFactory.FromPower<Paranoia>(),
+		HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
 	];
 
+	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+	
 	public Terrorize()
 		: base(0, (CardType)1, (CardRarity)4, (TargetType)2)
 	{
@@ -37,18 +40,18 @@ public class Terrorize : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Terrorize card = this;
-		decimal corruption = (decimal)((CardModel)card).ResolveEnergyXValue() * DynamicVarSetExtensions.Power<Corruption>(((CardModel)this).DynamicVars).BaseValue;
-		decimal paranoia = (decimal)((CardModel)card).ResolveEnergyXValue() * DynamicVarSetExtensions.Power<Paranoia>(((CardModel)this).DynamicVars).BaseValue;
+		decimal corruption = card.ResolveEnergyXValue() * DynamicVars.Power<Corruption>().BaseValue;
+		decimal paranoia = card.ResolveEnergyXValue() * DynamicVars.Power<Paranoia>().BaseValue;
 		if (corruption > 0m)
 		{
-			if (((CardModel)card).CurrentTarget != null)
+			if (card.CurrentTarget != null)
 			{
-				await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, corruption, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
-				await PowerCmd.Apply<Paranoia>(choiceContext, ((CardModel)card).CurrentTarget, paranoia, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+				await PowerCmd.Apply<Corruption>(choiceContext, card.CurrentTarget, corruption, Owner.Creature, this);
+				await PowerCmd.Apply<Paranoia>(choiceContext, card.CurrentTarget, paranoia, Owner.Creature, this);
 			}
 			if (play.Target != null)
 			{
-				await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).WithHitCount(((CardModel)card).ResolveEnergyXValue()).FromCard((CardModel)(object)card)
+				await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).WithHitCount(card.ResolveEnergyXValue()).FromCard(card)
 					.Targeting(play.Target)
 					.Execute(choiceContext);
 			}
@@ -57,8 +60,8 @@ public class Terrorize : TheFacelessCard
 
 	protected override void OnUpgrade()
 	{
-		((DynamicVar)((CardModel)this).DynamicVars.Damage).UpgradeValueBy(2m);
-		DynamicVarSetExtensions.Power<Corruption>(((CardModel)this).DynamicVars).UpgradeValueBy(3m);
-		DynamicVarSetExtensions.Power<Paranoia>(((CardModel)this).DynamicVars).UpgradeValueBy(1m);
+		DynamicVars.Damage.UpgradeValueBy(2m);
+		DynamicVars.Power<Corruption>().UpgradeValueBy(2m);
+		DynamicVars.Power<Paranoia>().UpgradeValueBy(1m);
 	}
 }

@@ -23,8 +23,11 @@ public class BadFeeling : TheFacelessCard
 	protected override IEnumerable<IHoverTip> ExtraHoverTips =>
 	[
 		HoverTipFactory.FromPower<Corruption>(),
-		HoverTipFactory.FromPower<Paranoia>()
+		HoverTipFactory.FromPower<Paranoia>(),
+		HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
 	];
+	
+	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
 	public BadFeeling()
 		: base(1, (CardType)2, (CardRarity)3, (TargetType)3)

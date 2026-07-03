@@ -2,7 +2,7 @@
   "THEFACELESS-CORRUPTION.description": "Does nothing on it's own",
   "THEFACELESS-CORRUPTION.smartDescription": "It's getting cold....",
   "THEFACELESS-CORRUPTION.title": "Corruption",
-  "THEFACELESS-PARANOIA.description": "If the enemy does not intend to attack it loses strength equal to its Paranoia at the start of turn. ALL Paranoia is removed regardless.", 
+  "THEFACELESS-PARANOIA.description": "If the enemy does not intend to attack it loses strength equal to its Paranoia at the start of turn. ALL Paranoia is removed regardless.",
   "THEFACELESS-PARANOIA.smartDescription": "If the enemy does not intend to attack it loses strength equal to its Paranoia at the end of turn ALL Paranoia is removed regardless.",
   "THEFACELESS-PARANOIA.title": "Paranoia",
   "THEFACELESS-BREAKING_POINT_POWER.description": "Enemy loses gains this turn",
@@ -58,5 +58,17 @@
   "THEFACELESS-BAD_HABITS_POWER.title": "Bad Habits",
   "THEFACELESS-SHATTER_IDENTITY_POWER.description": "",
   "THEFACELESS-SHATTER_IDENTITY_POWER.smartDescription": "",
-  "THEFACELESS-SHATTER_IDENTITY_POWER.title": "Shatter Identity"
+  "THEFACELESS-SHATTER_IDENTITY_POWER.title": "Shatter Identity}",
+  "THEFACELESS-PSYCHOGENESIS_POWER.description": "",
+  "THEFACELESS-PSYCHOGENESIS_POWER.smartDescription": "",
+  "THEFACELESS-PSYCHOGENESIS_POWER.title": "Psychogenesis",
+  "THEFACELESS-OPERATOR_FORM_POWER.description": "",
+  "THEFACELESS-OPERATOR_FORM_POWER.smartDescription": "",
+  "THEFACELESS-OPERATOR_FORM_POWER.title": "Operator Form",
+  "THEFACELESS-PSYCHE_POOL_POWER.description": "",
+  "THEFACELESS-PSYCHE_POOL_POWER.smartDescription": "",
+  "THEFACELESS-PSYCHE_POOL_POWER.title": "Psyche Pool",
+  "THEFACELESS-DROWN_IN_STATIC_POWER.description": "",
+  "THEFACELESS-DROWN_IN_STATIC_POWER.smartDescription": "",
+  "THEFACELESS-DROWN_IN_STATIC_POWER.title": "Drown in Static"
 }

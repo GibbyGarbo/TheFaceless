@@ -60,7 +60,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="TheFaceless\images\card_portraits\big\"/>
         <Folder Include="TheFaceless\images\powers\big\"/>
         <Folder Include="TheFaceless\images\relics\big\"/>
     </ItemGroup>

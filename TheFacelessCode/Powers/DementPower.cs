@@ -18,9 +18,9 @@ public class DementPower : TheFacelessPower
 	public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		DementPower dementPower = this;
-		if (!((cardPlay.Card.Owner == ((PowerModel)dementPower).Owner.Player) & !(cardPlay.Card.Enchantment is DejaVu)))
+		if (!((cardPlay.Card.Owner == dementPower.Owner.Player) & !(cardPlay.Card.Enchantment is DejaVu)))
 		{
-			await CreatureCmd.GainBlock(((PowerModel)dementPower).Owner, (decimal)((PowerModel)dementPower).Amount, (ValueProp)4, (CardPlay)null, true);
+			await CreatureCmd.GainBlock(dementPower.Owner, dementPower.Amount, (ValueProp)4, null, true);
 		}
 	}
 }

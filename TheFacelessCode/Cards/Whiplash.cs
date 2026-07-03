@@ -21,7 +21,7 @@ public class Whiplash() : TheFacelessCard(4,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
     new DamageVar(20, ValueProp.Move),
-    new ("Fart", 1)
+    new EnergyVar(1)
     ];
 
     protected override async Task OnPlay(
@@ -29,18 +29,20 @@ public class Whiplash() : TheFacelessCard(4,
         CardPlay play)
     {
         Whiplash card = this;
-        
         await CreatureCmd.TriggerAnim(card.Owner.Creature, "Cast", card.Owner.Character.AttackAnimDelay);
-        foreach (Creature hittableEnemy in card.CombatState.HittableEnemies)
+        DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard(card).TargetingAllOpponents(card.CombatState)
+            .Execute(choiceContext);
+        if (card.CombatState != null)
         {
-            NCombatRoom instance = NCombatRoom.Instance;
-            if (instance != null)
-                instance.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(hittableEnemy));
+            foreach (Creature hittableEnemy in card.CombatState.HittableEnemies)
+            {
+                    NCombatRoom instance = NCombatRoom.Instance;
+                    instance.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(hittableEnemy));
+                
+            }
         }
-        await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard(card).TargetingAllOpponents(card.CombatState).WithAttackerAnim(Ironclad.GetHeavyAnimIfApplicable(card.Owner.Character), Ironclad.GetHeavyAttackDelayIfApplicable(card.Owner.Character)).WithHitFx("vfx/vfx_heavy_blunt", tmpSfx: "heavy_attack.mp3").WithHitVfxSpawnedAtBase().Execute(choiceContext);
     }
-    
-    
+
 
     protected override void OnUpgrade()
     {
