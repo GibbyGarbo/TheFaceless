@@ -30,6 +30,7 @@ public class ExacerbatingPresence : TheFacelessCard
 		ExacerbatingPresence card = this;
 		int powerAmount = (play.Target.IsAlive ? play.Target.GetPowerAmount<Corruption>() : 0);
 		int upgradedPowerAmmount = (play.Target.IsAlive ? play.Target.GetPowerAmount<Corruption>() : 0) * 2;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		if (powerAmount > 0)
 		{
 			if (((CardModel)card).IsUpgraded)

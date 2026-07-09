@@ -37,6 +37,7 @@ public class SickenedWind : TheFacelessCard
 		SickenedWind card = this;
 		if ((decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() >= ((CardModel)card).DynamicVars["sickeningNeed"].BaseValue)
 		{
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 			await CreatureCmd.GainBlock(((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars.Block, play, false);
 			await PowerCmd.Apply<WeakPower>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["WeakPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		}

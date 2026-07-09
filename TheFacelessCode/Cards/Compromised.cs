@@ -30,6 +30,7 @@ public class Compromised : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Compromised card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, ((CalculatedVar)((CardModel)card).DynamicVars["CalculatedVulnerable"]).Calculate(play.Target), ((CardModel)card).Owner.Creature, (CardModel)(object)card, false);
 	}
 

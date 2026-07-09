@@ -40,6 +40,7 @@ public class InspireCabal : TheFacelessCard
 		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		foreach (Creature hittableEnemy in ((CardModel)card).CombatState.HittableEnemies)
 		{
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 			await PowerCmd.Apply<Corruption>(choiceContext, hittableEnemy, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 			await PowerCmd.Apply<RitualPower>(choiceContext, hittableEnemy, ((CardModel)this).DynamicVars["RitualPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		}

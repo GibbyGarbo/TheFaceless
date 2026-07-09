@@ -35,7 +35,7 @@ public class TentacleStrike() : TheFacelessCard(0, (CardType)1, (CardRarity)7, (
 	{
 		TentacleStrike card = this;
 		if (play.Target != null)
-			await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
+			await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash")
 				.Execute(choiceContext);
 		if (card.CurrentTarget != null)

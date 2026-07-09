@@ -27,6 +27,7 @@ public class TemptingPath : TheFacelessCard
 		decimal calculatedCards = (decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() / ((CardModel)this).DynamicVars["EveryNum"].BaseValue;
 		if ((decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() >= ((CardModel)this).DynamicVars["EveryNum"].BaseValue)
 		{
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 			await CardPileCmd.Draw(choiceContext, calculatedCards, ((CardModel)card).Owner, false);
 		}
 	}

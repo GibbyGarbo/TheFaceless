@@ -26,8 +26,9 @@ public class ItTakesYou : TheFacelessCard
 		ItTakesYou card = this;
 		foreach (Creature hittableEnemy in ((CardModel)card).CombatState.HittableEnemies)
 		{
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 			int CorruptionAmount = hittableEnemy.GetPowerAmount<Corruption>();
-			await CreatureCmd.Damage(choiceContext, hittableEnemy, (decimal)CorruptionAmount, (ValueProp)6, ((CardModel)this).Owner.Creature, (CardModel)(object)this);
+			await CreatureCmd.Damage(choiceContext, hittableEnemy, (decimal)CorruptionAmount, (ValueProp)6, ((CardModel)this).Owner.Creature, (CardModel)(object)this, play);
 		}
 	}
 

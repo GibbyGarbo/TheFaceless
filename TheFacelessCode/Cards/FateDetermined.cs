@@ -36,14 +36,14 @@ public class FateDetermined : TheFacelessCard
 		FateDetermined card = this;
 		if ((decimal)((CardModel)card).CurrentTarget.GetPowerAmount<Corruption>() >= ((CardModel)card).DynamicVars["sickeningNeed"].BaseValue - 1m)
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).WithHitCount(2).FromCard((CardModel)(object)card)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).WithHitCount(2).FromCard((CardModel)(object)card, play)
 				.Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 		}
 		else
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)card).Targeting(play.Target)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)card, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 		}

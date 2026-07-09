@@ -23,7 +23,7 @@ public class TheFaceless : PlaceholderCharacterModel
 
 	public override int StartingHp => 68;
 
-	public override IEnumerable<CardModel> StartingDeck => 
+	public override IEnumerable<CardModel> StartingDeck =>
 	[
 		ModelDb.Card<StrikeFaceless>(),
 		ModelDb.Card<StrikeFaceless>(),
@@ -40,7 +40,7 @@ public class TheFaceless : PlaceholderCharacterModel
 	public override IReadOnlyList<RelicModel> StartingRelics =>
 
 	[
-			ModelDb.Relic<TheSource>()
+		ModelDb.Relic<TheSource>()
 	];
 
 	public override CardPoolModel CardPool => ModelDb.CardPool<TheFacelessCardPool>();
@@ -69,6 +69,10 @@ public class TheFaceless : PlaceholderCharacterModel
 
 	public override NCreatureVisuals CreateCustomVisuals()
 	{
-		return NodeFactory<NCreatureVisuals>.CreateFromResource("res://TheFaceless/images/slenderman-color-01-jacob-blackmon.png");
+		return NodeFactory<NCreatureVisuals>.CreateFromScene("res://TheFacelessCode/control.tscn");
 	}
+
+	public override string CustomMerchantAnimPath => "res://TheFacelessCode/Merchent.tscn";
+
+	public override string CustomCharacterSelectBg => "res://TheFaceless/images/CharSelect/CharSelectBackground.tscn";
 }

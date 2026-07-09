@@ -26,6 +26,7 @@ public class CorruptedFootage : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		CorruptedFootage card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await PowerCmd.Apply<Corruption>(choiceContext, card.Owner.Creature, this.DynamicVars["Corruption"].BaseValue, this.Owner.Creature, this);
 		foreach (Creature hittableEnemy in card.CombatState.HittableEnemies)
 		{

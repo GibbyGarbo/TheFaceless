@@ -71,7 +71,7 @@ public class CalculatedCorruptionDamVar : CalculatedVar
     if (runGlobalHooks)
     {
       ICombatState combatState = card.CombatState ?? card.Owner.Creature.CombatState;
-      this.PreviewValue = Hook.ModifyDamage(card.Owner.RunState, combatState, target, this.IsFromOsty ? card.Owner.Osty : card.Owner.Creature, num1, this.Props, card, ModifyDamageHookType.All, previewMode, out IEnumerable<AbstractModel> _);
+      this.PreviewValue = Hook.ModifyDamage(card.Owner.RunState, combatState, target, this.IsFromOsty ? card.Owner.Osty : card.Owner.Creature, num1, this.Props, card, (CardPlay) null, ModifyDamageHookType.All, previewMode, out IEnumerable<AbstractModel> _);
     }
     else if (!card.IsEnchantmentPreview)
     {

@@ -42,7 +42,7 @@ public class EphemeralStrike : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		EphemeralStrike card = this;
-		await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this).Targeting(play.Target)
+		await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this, play).Targeting(play.Target)
 			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 			.Execute(choiceContext);
 		EnchantmentModel ephemeralStrike = (EnchantmentModel)(object)ModelDb.Enchantment<DejaVu>();

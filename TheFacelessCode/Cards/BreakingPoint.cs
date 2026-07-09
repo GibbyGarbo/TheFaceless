@@ -31,6 +31,7 @@ public class BreakingPoint : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		BreakingPoint breakingPoint = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		int strengthGain = ((CardModel)breakingPoint).CurrentTarget.GetPowerAmount<Corruption>();
 		await PowerCmd.Apply<BreakingPointPower>(choiceContext, ((CardModel)breakingPoint).CurrentTarget, (decimal)strengthGain, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		int blockGain = ((CardModel)breakingPoint).Owner.Creature.GetPowerAmount<Corruption>();

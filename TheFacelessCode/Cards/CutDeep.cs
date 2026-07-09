@@ -35,7 +35,7 @@ public class CutDeep : TheFacelessCard
 	protected override IEnumerable<DynamicVar> CanonicalVars => 
 	[
 		(DynamicVar)new DamageVar(15m, (ValueProp)8),
-		(DynamicVar)new PowerVar<Paranoia>(2m)
+		(DynamicVar)new PowerVar<Paranoia>(3m)
 	];
 
 	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -59,7 +59,7 @@ public class CutDeep : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		CutDeep card = this;
-		await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this).Targeting(play.Target)
+		await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard(card, play).Targeting(play.Target)
 			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 			.Execute(choiceContext);
 		await PowerCmd.Apply<Paranoia>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["Paranoia"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);

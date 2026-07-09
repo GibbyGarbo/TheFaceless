@@ -44,6 +44,7 @@ public class SpiralIntoMadness : TheFacelessCard
 		foreach (CardModel item in await CardSelectCmd.FromHand(choiceContext, ((CardModel)source).Owner, prefs, (Func<CardModel, bool>)null, (AbstractModel)(object)source))
 		{
 			CardCmd.Enchant<DejaVu>(item, 1m);
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		}
 	}
 

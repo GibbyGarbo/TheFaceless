@@ -26,6 +26,7 @@ public class DeafeningStatic : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		DeafeningStatic card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await CreatureCmd.GainBlock(card.Owner.Creature, card.DynamicVars.Block, play);
 		await PowerCmd.Apply<Corruption>(choiceContext, card.Owner.Creature, this.DynamicVars["Corruption"].BaseValue, this.Owner.Creature, this);
 	}

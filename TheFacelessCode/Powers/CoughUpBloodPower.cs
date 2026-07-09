@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -18,12 +16,12 @@ public class CoughUpBloodPower : TheFacelessPower
 	public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
 	{
 		CoughUpBloodPower coughUpBloodPower = this;
-		if (!((amount > 0m) & (applier != ((PowerModel)coughUpBloodPower).Owner)) && power is Corruption)
+		if (!((amount > 0m) & (applier != coughUpBloodPower.Owner)) && power is Corruption)
 		{
-			((PowerModel)coughUpBloodPower).Flash();
-			VfxCmd.PlayOnCreatureCenters((IEnumerable<Creature>)((PowerModel)coughUpBloodPower).CombatState.HittableEnemies, "vfx/vfx_attack_slash");
-			SfxCmd.Play("slash_attack.mp3", 1f);
-			await CreatureCmd.Damage(choiceContext, (IEnumerable<Creature>)((PowerModel)coughUpBloodPower).CombatState.HittableEnemies, (decimal)((PowerModel)coughUpBloodPower).Amount, (ValueProp)4, ((PowerModel)coughUpBloodPower).Owner, (CardModel)null);
+			coughUpBloodPower.Flash();
+			VfxCmd.PlayOnCreatureCenters(coughUpBloodPower.CombatState.HittableEnemies, "vfx/vfx_attack_slash");
+			SfxCmd.Play("slash_attack.mp3");
+			await CreatureCmd.Damage(choiceContext, coughUpBloodPower.CombatState.HittableEnemies, coughUpBloodPower.Amount, (ValueProp)4, coughUpBloodPower.Owner);
 		}
 	}
 }

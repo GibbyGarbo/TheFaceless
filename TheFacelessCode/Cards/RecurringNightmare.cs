@@ -39,6 +39,7 @@ public class RecurringNightmare : TheFacelessCard
 		RecurringNightmare card1 = this;
 		if ((decimal)((CardModel)card1).Owner.Creature.GetPowerAmount<Corruption>() >= ((CardModel)card1).DynamicVars["sickeningNeed"].BaseValue)
 		{
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 			await CreatureCmd.GainBlock(((CardModel)card1).Owner.Creature, ((CardModel)card1).DynamicVars.Block, play, false);
 			CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1);
 			CardModel card2 = (await CardSelectCmd.FromCombatPile(choiceContext, PileTypeExtensions.GetPile((PileType)3, ((CardModel)card1).Owner), ((CardModel)card1).Owner, prefs)).FirstOrDefault();

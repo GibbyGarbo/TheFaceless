@@ -24,7 +24,8 @@ public class Torment : TheFacelessCard
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
-		await DamageCmd.Attack((decimal)((CardModel)this).Owner.Creature.GetPowerAmount<Corruption>()).FromCard((CardModel)(object)this).Targeting(play.Target)
+		Torment card = this;
+		await DamageCmd.Attack((decimal)((CardModel)this).Owner.Creature.GetPowerAmount<Corruption>()).FromCard(card, play).Targeting(play.Target)
 			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 			.Execute(choiceContext);
 	}

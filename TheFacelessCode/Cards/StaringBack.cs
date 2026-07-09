@@ -24,6 +24,7 @@ public class StaringBack : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		StaringBack card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		int playerCorruption = ((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>();
 		int enemyCorruption = ((CardModel)card).CurrentTarget.GetPowerAmount<Corruption>();
 		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, (decimal)(-enemyCorruption), ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);

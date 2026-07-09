@@ -45,6 +45,7 @@ public class ImpossibleOutcome : TheFacelessCard
 	{
 		ImpossibleOutcome card1 = this;
 		EnchantmentModel impossibleOutcome = (EnchantmentModel)(object)ModelDb.Enchantment<DejaVu>();
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await CreatureCmd.GainBlock(((CardModel)card1).Owner.Creature, ((CardModel)card1).DynamicVars.Block, play, false);
 		foreach (CardModel item in IEnumerableExtensions.TakeRandom<CardModel>(PileTypeExtensions.GetPile((PileType)3, ((CardModel)card1).Owner).Cards.Where((CardModel c) => impossibleOutcome.CanEnchant(c)), ((DynamicVar)((CardModel)card1).DynamicVars.Cards).IntValue, ((CardModel)card1).Owner.RunState.Rng.CombatCardSelection))
 		{

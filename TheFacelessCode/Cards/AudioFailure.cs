@@ -31,12 +31,13 @@ public class AudioFailure : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		AudioFailure card = this;
-		decimal block = (decimal)((CardModel)card).ResolveEnergyXValue() * ((DynamicVar)((CardModel)this).DynamicVars.Block).BaseValue;
-		decimal corruption = (decimal)((CardModel)card).ResolveEnergyXValue() * DynamicVarSetExtensions.Power<Corruption>(((CardModel)this).DynamicVars).BaseValue;
+		decimal block = card.ResolveEnergyXValue() * DynamicVars.Block.BaseValue;
+		decimal corruption = card.ResolveEnergyXValue() * DynamicVars.Power<Corruption>().BaseValue;
 		if (block > 0m)
 		{
-			await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).Owner.Creature, corruption, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
-			await CreatureCmd.GainBlock(((CardModel)card).Owner.Creature, block, (ValueProp)8, play, false);
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+			await PowerCmd.Apply<Corruption>(choiceContext, card.Owner.Creature, corruption, Owner.Creature, this);
+			await CreatureCmd.GainBlock(card.Owner.Creature, block, (ValueProp)8, play);
 		}
 	}
 

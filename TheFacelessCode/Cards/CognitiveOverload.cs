@@ -36,6 +36,7 @@ public class CognitiveOverload : TheFacelessCard
 		CognitiveOverload card1 = this;
 		if (card1.Owner.Creature.GetPowerAmount<Corruption>() >= card1.DynamicVars["sickeningNeed"].BaseValue - 1m)
 		{
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 			await CreatureCmd.GainBlock(card1.Owner.Creature, card1.DynamicVars.Block, play);
 			await CardPileCmd.Draw(choiceContext, card1.DynamicVars.Cards.BaseValue, card1.Owner);
 		}

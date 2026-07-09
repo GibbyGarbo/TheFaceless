@@ -14,7 +14,7 @@ public class StrikeFaceless : TheFacelessCard
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, (ValueProp)8)];
 
-	protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { (CardTag)1 };
+	protected override HashSet<CardTag> CanonicalTags => new() { (CardTag)1 };
 
 	public StrikeFaceless()
 		: base(1, (CardType)1, (CardRarity)1, (TargetType)2)
@@ -24,14 +24,14 @@ public class StrikeFaceless : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		StrikeFaceless card = this;
-		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)card).Targeting(cardPlay.Target)
-			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
+		ArgumentNullException.ThrowIfNull(cardPlay.Target);
+		await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard(card, cardPlay).Targeting(cardPlay.Target)
+			.WithHitFx("vfx/vfx_attack_slash")
 			.Execute(choiceContext);
 	}
 
 	protected override void OnUpgrade()
 	{
-		((DynamicVar)((CardModel)this).DynamicVars.Damage).UpgradeValueBy(3m);
+		DynamicVars.Damage.UpgradeValueBy(3m);
 	}
 }

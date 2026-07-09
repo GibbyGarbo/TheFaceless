@@ -1,0 +1,249 @@
+[gd_scene load_steps=12 format=3 uid="uid://ce6xvkyrclhhr"]
+
+[ext_resource type="Texture2D" uid="uid://dr3diqjq8tjay" path="res://TheFaceless/images/CharSelect/Background219.png" id="1_iav2r"]
+[ext_resource type="Texture2D" uid="uid://c4lhnji0omyt5" path="res://TheFaceless/images/CharSelect/Trees.png" id="2_3sabk"]
+[ext_resource type="Texture2D" uid="uid://61l1b7leelhg" path="res://TheFaceless/images/CharSelect/TreesBG.png" id="2_iav2r"]
+[ext_resource type="Texture2D" uid="uid://inpwe5p4k0e" path="res://TheFaceless/images/CharSelect/Grass219.png" id="2_rrc2g"]
+[ext_resource type="Texture2D" uid="uid://c6dana6o2hh0a" path="res://TheFaceless/images/CharSelect/CameraBorder.png" id="3_3uwri"]
+[ext_resource type="Texture2D" uid="uid://ddvxvu67jdav8" path="res://TheFaceless/images/CharSelect/TheBoy.png" id="4_7jyi1"]
+[ext_resource type="Texture2D" uid="uid://dinulne6h2j7l" path="res://TheFaceless/images/CharSelect/CameraStatic.png" id="5_rrc2g"]
+[ext_resource type="Texture2D" uid="uid://btrf5ltc8nqm2" path="res://TheFaceless/images/CharSelect/CameraDot.png" id="7_rrc2g"]
+
+[sub_resource type="Animation" id="Animation_7jyi1"]
+resource_name = "Static"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraStatic:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667, 0.8, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraStatic:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.33333334, 0.40000004, 0.4666667, 0.53333336, 0.6, 0.6666667, 0.73333335, 0.8000001, 0.8666667, 0.9333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraDot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_enug7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraStatic:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraStatic:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraDot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jidem"]
+_data = {
+&"RESET": SubResource("Animation_enug7"),
+&"Static": SubResource("Animation_7jyi1")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_left = -0.06437373
+anchor_top = -0.062962964
+anchor_right = 1.0733185
+anchor_bottom = 1.0722178
+offset_left = 123.597565
+offset_top = 68.0
+offset_right = 199.79932
+offset_bottom = 113.57593
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.84934294, 0.84934294)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sky" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55546874
+anchor_top = 0.5263506
+anchor_right = 0.5554688
+anchor_bottom = 0.5263506
+offset_left = -1255.6764
+offset_top = -669.29224
+offset_right = 664.3236
+offset_bottom = 610.70776
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1773757, 0.9934034)
+texture = ExtResource("1_iav2r")
+metadata/_edit_use_anchors_ = true
+
+[node name="TreesBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55546874
+anchor_top = 0.5263506
+anchor_right = 0.5554688
+anchor_bottom = 0.5263506
+offset_left = -1575.6763
+offset_top = -669.29224
+offset_right = 984.3235
+offset_bottom = 610.7077
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1773757, 0.9934034)
+texture = ExtResource("2_iav2r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Grass" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55546874
+anchor_top = 0.5263506
+anchor_right = 0.5554688
+anchor_bottom = 0.5263506
+offset_left = -1255.6764
+offset_top = -669.29224
+offset_right = 664.3236
+offset_bottom = 610.70776
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1773757, 0.9934034)
+texture = ExtResource("2_rrc2g")
+metadata/_edit_use_anchors_ = true
+
+[node name="Slenderman" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55546874
+anchor_top = 0.5263506
+anchor_right = 0.5554688
+anchor_bottom = 0.5263506
+offset_left = -1575.6763
+offset_top = -669.29224
+offset_right = 984.3235
+offset_bottom = 610.7077
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1773757, 0.9934034)
+texture = ExtResource("4_7jyi1")
+metadata/_edit_use_anchors_ = true
+
+[node name="Trees" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55546874
+anchor_top = 0.5263506
+anchor_right = 0.5554688
+anchor_bottom = 0.5263506
+offset_left = -1255.6764
+offset_top = -669.29224
+offset_right = 664.3236
+offset_bottom = 610.70776
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1773757, 0.9934034)
+texture = ExtResource("2_3sabk")
+metadata/_edit_use_anchors_ = true
+
+[node name="CameraStatic" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.526
+anchor_right = 0.555
+anchor_bottom = 0.526
+offset_left = -1574.6168
+offset_top = -668.84644
+offset_right = 985.3832
+offset_bottom = 611.15356
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.177, 0.993)
+texture = ExtResource("5_rrc2g")
+
+[node name="Camera" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.526
+anchor_right = 0.555
+anchor_bottom = 0.526
+offset_left = -1574.6168
+offset_top = -668.84644
+offset_right = 985.3832
+offset_bottom = 611.15356
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.177, 0.993)
+texture = ExtResource("3_3uwri")
+
+[node name="CameraDot" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.526
+anchor_right = 0.555
+anchor_bottom = 0.526
+offset_left = -1574.6168
+offset_top = -668.84644
+offset_right = 985.3832
+offset_bottom = 611.15356
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.177, 0.993)
+texture = ExtResource("7_rrc2g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jidem")
+}
+autoplay = "Static"

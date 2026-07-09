@@ -13,7 +13,7 @@ namespace TheFaceless.TheFacelessCode.Cards;
 
 public class ManInTheSuit : TheFacelessCard
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("EveryNum", 15m)];
+	protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("EveryNum", 13m)];
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (IEnumerable<IHoverTip>)(object)new IHoverTip[3]
 	{
@@ -32,6 +32,7 @@ public class ManInTheSuit : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		ManInTheSuit card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		decimal calculatedStrength = (decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() / ((CardModel)this).DynamicVars["EveryNum"].BaseValue;
 		if ((decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() >= ((CardModel)this).DynamicVars["EveryNum"].BaseValue)
 		{

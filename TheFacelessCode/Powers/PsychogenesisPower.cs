@@ -28,6 +28,6 @@ public class PsychogenesisPower : TheFacelessPower
             //(amount <= 0M && power is Paranoia && power.Owner.IsEnemy && applier == psychogenesisPower.Owner)
             return;
         psychogenesisPower.Flash();
-        await CreatureCmd.Damage(choiceContext, power.Owner, psychogenesisPower.Amount, ValueProp.Unpowered, psychogenesisPower.Owner, null);
+        await CreatureCmd.Damage(choiceContext, power.Owner, psychogenesisPower.Amount, ValueProp.Unpowered, psychogenesisPower.Owner);
     }
 }

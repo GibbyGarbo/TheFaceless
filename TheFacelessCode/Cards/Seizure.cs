@@ -30,7 +30,7 @@ public class Seizure : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Seizure card = this;
-		await DamageCmd.Attack(((CalculatedVar)((CardModel)this).DynamicVars.CalculatedDamage).Calculate(((CardModel)card).CurrentTarget)).FromCard((CardModel)(object)this).Targeting(play.Target)
+		await DamageCmd.Attack(((CalculatedVar)((CardModel)this).DynamicVars.CalculatedDamage).Calculate(((CardModel)card).CurrentTarget)).FromCard((CardModel)(object)this, play).Targeting(play.Target)
 			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 			.Execute(choiceContext);
 	}

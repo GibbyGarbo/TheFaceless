@@ -31,6 +31,7 @@ public class Inexpugnable : TheFacelessCard
 		Inexpugnable card = this;
 		if (!((decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() <= ((CardModel)card).DynamicVars["sickeningNeed"].BaseValue - 1m))
 		{
+			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 			await PlayerCmd.GainEnergy((decimal)((DynamicVar)((CardModel)card).DynamicVars.Energy).IntValue, ((CardModel)card).Owner);
 		}
 	}
@@ -38,6 +39,6 @@ public class Inexpugnable : TheFacelessCard
 	protected override void OnUpgrade()
 	{
 		((DynamicVar)((CardModel)this).DynamicVars.Energy).UpgradeValueBy(1m);
-		((CardModel)this).DynamicVars["sickeningNeed"].UpgradeValueBy(5m);
+		((CardModel)this).DynamicVars["sickeningNeed"].UpgradeValueBy(2);
 	}
 }

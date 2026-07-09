@@ -36,14 +36,14 @@ public class Desensitize : TheFacelessCard
 		Desensitize card = this;
 		if ((decimal)((CardModel)card).CurrentTarget.GetPowerAmount<Corruption>() >= ((CardModel)card).DynamicVars["sickeningNeed"].BaseValue - 1m)
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)card).Targeting(play.Target)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard(card, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 			await PowerCmd.Apply<VulnerablePower>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["VulnerablePower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		}
 		else
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)card).Targeting(play.Target)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard(card, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 		}

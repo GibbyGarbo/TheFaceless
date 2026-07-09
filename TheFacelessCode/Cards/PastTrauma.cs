@@ -30,7 +30,7 @@ public class PastTrauma : TheFacelessCard
 		PastTrauma card = this;
 		if (((EnchantmentModel)ModelDb.Enchantment<DejaVu>()).CanEnchant((CardModel)(object)card))
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this).Targeting(play.Target)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 			await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
@@ -38,7 +38,7 @@ public class PastTrauma : TheFacelessCard
 		}
 		else
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this).Targeting(play.Target)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 			await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);

@@ -40,6 +40,7 @@ public class UnexpectedShift : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		UnexpectedShift source = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await PowerCmd.Apply<WeakPower>(choiceContext, ((CardModel)source).CurrentTarget, ((CardModel)this).DynamicVars["WeakPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		EnchantmentModel cantRun = (EnchantmentModel)(object)ModelDb.Enchantment<DejaVu>();
 		CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
@@ -53,6 +54,6 @@ public class UnexpectedShift : TheFacelessCard
 
 	protected override void OnUpgrade()
 	{
-		DynamicVarSetExtensions.Power<WeakPower>(((CardModel)this).DynamicVars).UpgradeValueBy(2m);
+		DynamicVarSetExtensions.Power<WeakPower>(((CardModel)this).DynamicVars).UpgradeValueBy(1m);
 	}
 }

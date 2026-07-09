@@ -29,6 +29,7 @@ public class Delirium : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Delirium card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, DynamicVarSetExtensions.Power<Corruption>(((CardModel)this).DynamicVars).BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 	}
 

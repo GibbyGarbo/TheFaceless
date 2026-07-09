@@ -11,7 +11,7 @@ namespace TheFaceless.TheFacelessCode.Cards;
 
 public class AroundTheCorner() : TheFacelessCard(1,
 		CardType.Attack, CardRarity.Uncommon,
-		TargetType.Self)
+		TargetType.AnyEnemy)
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => 
 	[
@@ -38,7 +38,7 @@ public class AroundTheCorner() : TheFacelessCard(1,
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		AroundTheCorner card = this;
-		await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
+		await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(card, play).Targeting(play.Target)
 			.WithHitFx("vfx/vfx_attack_slash")
 			.Execute(choiceContext);
 		await PowerCmd.Apply<Paranoia>(choiceContext, card.CurrentTarget, DynamicVars["Paranoia"].BaseValue, Owner.Creature, this);

@@ -21,7 +21,7 @@ public class EndOfTheTunnel() : TheFacelessCard(0, (CardType)1, (CardRarity)3, (
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		EndOfTheTunnel card = this;
-		await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(card.CurrentTarget)).FromCard(this).Targeting(play.Target)
+		await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(card.CurrentTarget)).FromCard(this, play).Targeting(play.Target)
 			.WithHitFx("vfx/vfx_attack_slash")
 			.Execute(choiceContext);
 	}

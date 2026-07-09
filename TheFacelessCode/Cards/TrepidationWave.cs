@@ -48,7 +48,7 @@ public class TrepidationWave : TheFacelessCard
 	{
 		TrepidationWave card = this;
 		await CreatureCmd.TriggerAnim(((CardModel)card).Owner.Creature, "Attack", ((CardModel)card).Owner.Character.AttackAnimDelay);
-		DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)card).TargetingAllOpponents(((CardModel)card).CombatState)
+		DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)card, play).TargetingAllOpponents(((CardModel)card).CombatState)
 			.Execute(choiceContext);
 		foreach (Creature hittableEnemy in ((CardModel)card).CombatState.HittableEnemies)
 		{

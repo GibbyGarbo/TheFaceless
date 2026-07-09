@@ -31,9 +31,9 @@ public class TooLate : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		TooLate card = this;
-		await DamageCmd.Attack(((DynamicVar)((CardModel)card).DynamicVars.Damage).BaseValue).WithHitCount((int)((CalculatedVar)((CardModel)card).DynamicVars["CalculatedHits"]).Calculate(play.Target)).FromCard((CardModel)(object)card)
+		await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).WithHitCount((int)((CalculatedVar)card.DynamicVars["CalculatedHits"]).Calculate(play.Target)).FromCard((CardModel)card, play)
 			.Targeting(play.Target)
-			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
+			.WithHitFx("vfx/vfx_attack_slash")
 			.Execute(choiceContext);
 	}
 

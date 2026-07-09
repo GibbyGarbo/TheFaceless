@@ -37,6 +37,7 @@ public class Inescapable : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Inescapable card1 = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		EnchantmentModel inescapable = (EnchantmentModel)(object)ModelDb.Enchantment<DejaVu>();
 		int sickening = ((CardModel)card1).Owner.Creature.GetPowerAmount<Corruption>();
 		if (((CardModel)card1).IsUpgraded)

@@ -42,12 +42,14 @@ public class FromTheArk : TheFacelessCard
 			card.SetToFreeThisTurn();
 			if (((CardModel)fromTheArk).IsUpgraded)
 			{
+				await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 				CardCmd.Enchant<DejaVu>(card, 1m);
 				CardCmd.Upgrade(card, (CardPreviewStyle)1);
 				await CardPileCmd.AddGeneratedCardToCombat(card, (PileType)2, ((CardModel)fromTheArk).Owner, (CardPilePosition)1);
 			}
 			else
 			{
+				await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 				CardCmd.Enchant<DejaVu>(card, 1m);
 				await CardPileCmd.AddGeneratedCardToCombat(card, (PileType)2, ((CardModel)fromTheArk).Owner, (CardPilePosition)1);
 			}

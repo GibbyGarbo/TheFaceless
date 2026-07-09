@@ -26,7 +26,7 @@ public class Palpitate : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Palpitate card = this;
-		await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this).Targeting(play.Target)
+		await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this, play).Targeting(play.Target)
 			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 			.Execute(choiceContext);
 		if (((CardModel)this).CurrentTarget.GetPowerAmount<Corruption>() > 4)

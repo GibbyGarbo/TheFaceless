@@ -51,7 +51,7 @@ public class Terrorize : TheFacelessCard
 			}
 			if (play.Target != null)
 			{
-				await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).WithHitCount(card.ResolveEnergyXValue()).FromCard(card)
+				await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).WithHitCount(card.ResolveEnergyXValue()).FromCard(card, play)
 					.Targeting(play.Target)
 					.Execute(choiceContext);
 			}

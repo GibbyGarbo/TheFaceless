@@ -39,6 +39,7 @@ public class BeyondReckoning : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		BeyondReckoning card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		if (((EnchantmentModel)ModelDb.Enchantment<DejaVu>()).CanEnchant((CardModel)(object)card))
 		{
 			await CardPileCmd.Draw(choiceContext, ((DynamicVar)((CardModel)card).DynamicVars.Cards).BaseValue, ((CardModel)card).Owner, false);

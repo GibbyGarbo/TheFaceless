@@ -55,7 +55,7 @@ public class Paralyze() : TheFacelessCard(1,
                 await PowerCmd.Apply<Corruption>(choiceContext, hittableEnemy,
                     DynamicVars.Power<Corruption>().BaseValue, Owner.Creature, this);
                 await CreatureCmd.Damage(choiceContext, hittableEnemy,
-                    DynamicVars.CalculatedDamage.Calculate(hittableEnemy), (ValueProp)12, Owner.Creature, this);
+                    DynamicVars.CalculatedDamage.Calculate(hittableEnemy), (ValueProp)12, card, play);
             }
         }
     }

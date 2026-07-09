@@ -9,27 +9,22 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace TheFaceless.TheFacelessCode.Cards;
 
-public class DefendFaceless : TheFacelessCard
+public class DefendFaceless() : TheFacelessCard(1, (CardType)2, (CardRarity)1, (TargetType)1)
 {
 	public override bool GainsBlock => true;
 
-	protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { (CardTag)2 };
+	protected override HashSet<CardTag> CanonicalTags => [(CardTag)2];
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5m, (ValueProp)8)];
-
-	public DefendFaceless()
-		: base(1, (CardType)2, (CardRarity)1, (TargetType)1)
-	{
-	}
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		DefendFaceless defendFaceless = this;
-		await CreatureCmd.GainBlock(((CardModel)defendFaceless).Owner.Creature, ((CardModel)defendFaceless).DynamicVars.Block, play, false);
+		await CreatureCmd.GainBlock(defendFaceless.Owner.Creature, defendFaceless.DynamicVars.Block, play);
 	}
 
 	protected override void OnUpgrade()
 	{
-		((DynamicVar)((CardModel)this).DynamicVars.Block).UpgradeValueBy(3m);
+		DynamicVars.Block.UpgradeValueBy(3m);
 	}
 }

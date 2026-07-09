@@ -38,6 +38,7 @@ public class CantRun : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		CantRun source = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		EnchantmentModel cantRun = ModelDb.Enchantment<DejaVu>();
 		CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
 		((PileType)6).GetPile(source.Owner).Cards.Where(c => cantRun.CanEnchant(c)).ToList();

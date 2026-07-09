@@ -38,9 +38,9 @@ public class Migraine : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Migraine card = this;
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
-		await DamageCmd.Attack(((CalculatedVar)((CardModel)this).DynamicVars.CalculatedDamage).Calculate(((CardModel)card).CurrentTarget)).FromCard((CardModel)(object)this).Targeting(play.Target)
-			.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
+		await PowerCmd.Apply<Corruption>(choiceContext, card.CurrentTarget, this.DynamicVars["Corruption"].BaseValue, this.Owner.Creature, this);
+		await DamageCmd.Attack(this.DynamicVars.CalculatedDamage.Calculate(card.CurrentTarget)).FromCard((CardModel)this, play).Targeting(play.Target)
+			.WithHitFx("vfx/vfx_attack_slash")
 			.Execute(choiceContext);
 	}
 

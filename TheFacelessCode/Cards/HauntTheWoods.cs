@@ -36,14 +36,14 @@ public class HauntTheWoods : TheFacelessCard
 		HauntTheWoods card = this;
 		if ((decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() >= ((CardModel)card).DynamicVars["sickeningNeed"].BaseValue)
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this).Targeting(play.Target)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 			await CreatureCmd.GainBlock(((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars.Block, play, false);
 		}
 		else
 		{
-			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this).Targeting(play.Target)
+			await DamageCmd.Attack(((DynamicVar)((CardModel)this).DynamicVars.Damage).BaseValue).FromCard((CardModel)(object)this, play).Targeting(play.Target)
 				.WithHitFx("vfx/vfx_attack_slash", (string)null, (string)null)
 				.Execute(choiceContext);
 		}

@@ -32,6 +32,7 @@ public class TowerOver : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		TowerOver card = this;
+		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await PowerCmd.Apply<ShrinkPower>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["ShrinkPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 	}
 
