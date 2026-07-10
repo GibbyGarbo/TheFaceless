@@ -29,10 +29,10 @@ public class Inexpugnable : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		Inexpugnable card = this;
-		if (!((decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() <= ((CardModel)card).DynamicVars["sickeningNeed"].BaseValue - 1m))
+		if (!(card.Owner.Creature.GetPowerAmount<Corruption>() <= card.DynamicVars["sickeningNeed"].BaseValue - 1m))
 		{
 			await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-			await PlayerCmd.GainEnergy((decimal)((DynamicVar)((CardModel)card).DynamicVars.Energy).IntValue, ((CardModel)card).Owner);
+			await PlayerCmd.GainEnergy(card.DynamicVars.Energy.IntValue, card.Owner);
 		}
 	}
 

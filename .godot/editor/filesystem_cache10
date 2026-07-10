@@ -238,7 +238,7 @@ MainFile.cs::CSharpScript::3404280300351866536::1782610270::0::1::::<><><>0<>0<>
 Merchent.tscn::PackedScene::3688627544988044401::1783620148::0::1::::<><><>0<>0<><>::uid://dl84i6vill50r::::res://TheFaceless/images/card_portraits/big/palpitate.png<>uid://db1rgnlrd2nxf::::res://TheFaceless/images/Slenderman4Choppin.png<>uid://17a6q6bdjskd::::res://TheFaceless/images/StaticStatic.png
 ::res://TheFacelessCode/CalculatedVars/::1783107764
 CalculatedCorruptionDamVar.cs::CSharpScript::5290908745101489102::1783107764::0::1::::<><><>0<>0<><>::
-::res://TheFacelessCode/Cards/::1783583456
+::res://TheFacelessCode/Cards/::1783670899
 AlwaysWatching.cs::CSharpScript::5920156619179467957::1783461380::0::1::::<><><>0<>0<><>::
 ArkTrap.cs::CSharpScript::1652827384016829901::1783582496::0::1::::<><><>0<>0<><>::
 AroundTheCorner.cs::CSharpScript::3100322703039467537::1783366415::0::1::::<><><>0<>0<><>::
@@ -283,7 +283,7 @@ Hypochondria.cs::CSharpScript::9167450618981172564::1782663958::0::1::::<><><>0<
 ImpareFunction.cs::CSharpScript::4432439069234816011::1783582982::0::1::::<><><>0<>0<><>::
 ImpossibleOutcome.cs::CSharpScript::5814749949780288416::1783583011::0::1::::<><><>0<>0<><>::
 Inescapable.cs::CSharpScript::4286474964985595089::1783583038::0::1::::<><><>0<>0<><>::
-Inexpugnable.cs::CSharpScript::836003039893402663::1783583077::0::1::::<><><>0<>0<><>::
+Inexpugnable.cs::CSharpScript::836003039893402663::1783670899::0::1::::<><><>0<>0<><>::
 InspireCabal.cs::CSharpScript::8276732537695167503::1783583112::0::1::::<><><>0<>0<><>::
 IterationCycle.cs::CSharpScript::399092271438302651::1782664117::0::1::::<><><>0<>0<><>::
 ItTakesYou.cs::CSharpScript::5604226834474005832::1783583128::0::1::::<><><>0<>0<><>::
@@ -373,10 +373,10 @@ TheFacelessPower.cs::CSharpScript::3229950880425243944::1782661552::0::1::::<><>
 ToTheArkPower.cs::CSharpScript::151441901798789809::1782594945::0::1::::<><><>0<>0<><>::
 WanderOffPower.cs::CSharpScript::1735636942840965587::1782594945::0::1::::<><><>0<>0<><>::
 ::res://TheFacelessCode/Powers/uuids/::1782609661
-::res://TheFacelessCode/Relics/::1783661152
+::res://TheFacelessCode/Relics/::1783671154
 BloodyRock.cs::CSharpScript::-1::1783626144::0::1::::<><><>0<>0<><>::
 BurntTape.cs::CSharpScript::4362782005742039154::1783458332::0::1::::<><><>0<>0<><>::
-CracklingDevice.cs::CSharpScript::7264772239871684117::1783661152::0::1::::<><><>0<>0<><>::
+CracklingDevice.cs::CSharpScript::7264772239871684117::1783671154::0::1::::<><><>0<>0<><>::
 MissingPoster.cs::CSharpScript::7689257655189285290::1783651906::0::1::::<><><>0<>0<><>::
 PillBottle.cs::CSharpScript::335771641530122747::1783650453::0::1::::<><><>0<>0<><>::
 StrangeDoll.cs::CSharpScript::3428300312562032721::1783626144::0::1::::<><><>0<>0<><>::

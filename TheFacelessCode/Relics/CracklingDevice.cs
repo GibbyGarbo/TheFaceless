@@ -23,7 +23,7 @@ public class CracklingDevice : TheFacelessRelic
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<DexterityPower>(3),
-        new DynamicVar("CorruptionThreshold", 15)
+        new DynamicVar("CorruptionThreshold", 14)
     ];
 
 
@@ -43,12 +43,6 @@ public class CracklingDevice : TheFacelessRelic
         }
     }
     
-    public override async Task AfterRoomEntered(AbstractRoom room)
-    {
-        if (!(room is CombatRoom))
-            return;
-        await ModifyDexterityIfNecessary();
-    }
     
     public override Task AfterCombatEnd(CombatRoom _)
     {
@@ -60,30 +54,32 @@ public class CracklingDevice : TheFacelessRelic
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, Decimal amount, Creature? applier,
         CardModel? cardSource)
     {
-        if (!CombatManager.Instance.IsInProgress && power is Corruption)
+        if (!CombatManager.Instance.IsInProgress || power is not Corruption || power.Owner != applier)
             return;
-        await ModifyDexterityIfNecessary();
+        await ModifyDexterityIfNecessary(choiceContext);
     }
 
-    private async Task ModifyDexterityIfNecessary()
+    private async Task ModifyDexterityIfNecessary(PlayerChoiceContext choiceContext)
     {
         Creature creature = Owner.Creature;
-        bool flag = creature.GetPowerAmount<Corruption>() >= DynamicVars["CorruptionThreshold"].BaseValue;
-        Status = flag ? RelicStatus.Normal : RelicStatus.Active;
+       // bool flag = creature.GetPowerAmount<Corruption>() > DynamicVars["CorruptionThreshold"].BaseValue;
+       // Status = flag ? RelicStatus.Normal : RelicStatus.Active;
         Decimal baseValue = DynamicVars.Dexterity.BaseValue;
-        if (flag && DexterityApplied)
+        if (creature.GetPowerAmount<Corruption>() < 15 && DexterityApplied)
         {
             Flash();
-            await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), creature, -baseValue, creature, null);
+            await PowerCmd.Apply<DexterityPower>(choiceContext, creature, -baseValue, creature, null);
             DexterityApplied = false;
+        }
+        else if (creature.GetPowerAmount<Corruption>() >= 15 && !DexterityApplied)
+        {
+            Flash();
+            await PowerCmd.Apply<DexterityPower>(choiceContext, creature, baseValue, creature, null);
+            DexterityApplied = true;
         }
         else
         {
-            if (flag || DexterityApplied)
-                return;
-            Flash();
-            await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), creature, baseValue, creature, null);
-            DexterityApplied = true;
+            DynamicVars.Dexterity.UpgradeValueBy(0);
         }
     }
 }
