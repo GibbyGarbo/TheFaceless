@@ -23,7 +23,7 @@ public class CracklingDevice : TheFacelessRelic
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<DexterityPower>(3),
-        new DynamicVar("CorruptionThreshold", 14)
+        new DynamicVar("CorruptionThreshold", 15)
     ];
 
 
@@ -51,7 +51,7 @@ public class CracklingDevice : TheFacelessRelic
         return Task.CompletedTask;
     }
 
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, Decimal amount, Creature? applier,
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
         CardModel? cardSource)
     {
         if (!CombatManager.Instance.IsInProgress || power is not Corruption || power.Owner != applier)

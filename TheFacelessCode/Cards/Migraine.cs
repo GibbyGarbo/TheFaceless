@@ -15,7 +15,7 @@ using TheFaceless.TheFacelessCode.Powers;
 
 namespace TheFaceless.TheFacelessCode.Cards;
 
-public class Migraine : TheFacelessCard
+public class Migraine() : TheFacelessCard(2, (CardType)1, (CardRarity)4, (TargetType)2)
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => 
 		[
@@ -29,11 +29,6 @@ public class Migraine : TheFacelessCard
 	];
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (IEnumerable<IHoverTip>)(object)new IHoverTip[1] { HoverTipFactory.FromPower<Corruption>((int?)null) };
-
-	public Migraine()
-		: base(1, (CardType)1, (CardRarity)4, (TargetType)2)
-	{
-	}
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{

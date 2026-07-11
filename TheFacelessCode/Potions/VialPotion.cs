@@ -38,17 +38,15 @@ public class VialPotion : CustomPotionModel
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
-        AssertValidForTargetedPotion(target);
-
         if (Owner.Creature.CombatState != null)
         {
             foreach (Creature creature in Owner.Creature.CombatState.Creatures.Where(c => !c.IsPet))
+            {
                 NCombatRoom.Instance?.PlaySplashVfx(creature, new Color("404040"));
-            NCombatRoom.Instance?.PlaySplashVfx(Owner.Creature, new Color("404040"));
-            NCombatRoom.Instance?.PlaySplashVfx(target, new Color("404040"));
                 await PowerCmd.Apply<Corruption>(choiceContext,
-                    Owner.Creature.CombatState.Creatures.Where(c => !c.IsPet),
+                    creature,
                     DynamicVars.Power<Corruption>().BaseValue, Owner.Creature, null);
+            }
         }
     }
 }

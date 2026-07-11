@@ -75,4 +75,6 @@ public class TheFaceless : PlaceholderCharacterModel
 	public override string CustomMerchantAnimPath => "res://TheFacelessCode/Merchent.tscn";
 
 	public override string CustomCharacterSelectBg => "res://TheFaceless/images/CharSelect/CharSelectBackground.tscn";
+
+	public override string CustomEnergyCounterPath =>  "res://TheFaceless/images/EnergyCounter/energy_control.tscn";
 }

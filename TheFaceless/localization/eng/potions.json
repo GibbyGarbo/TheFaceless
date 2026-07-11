@@ -1,7 +1,7 @@
 ﻿{
-  "THEFACELESS-VIAL_POTION.description": "Apply 7 [gold]Corruption[/gold] to EVERYONE",
+  "THEFACELESS-VIAL_POTION.description": "Apply {Corruption:diff()} [gold]Corruption[/gold] to EVERYONE",
   "THEFACELESS-VIAL_POTION.title": "Vial Potion",
-  "THEFACELESS-PANIC_POTION.description": "Apply 3 [gold]Paranoia[/gold] to an enemy.",
+  "THEFACELESS-PANIC_POTION.description": "Apply (Paranoia:diff()} [gold]Paranoia[/gold] to an enemy.",
   "THEFACELESS-PANIC_POTION.title": "Panic Potion",
   "THEFACELESS-FAMILIAR_POTION.description": "Add a random card enchanted with [purple]Déjà vu[/purple] to your hand, it's free to play this turn.",
   "THEFACELESS-FAMILIAR_POTION.title": "Familiar Potion"

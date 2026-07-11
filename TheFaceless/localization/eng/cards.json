@@ -97,7 +97,7 @@
   "THEFACELESS-INSPIRE_CABAL.title": "Inspire Cabal",
   "THEFACELESS-DEGRADING_SANITY.description": "At the start of you turn apply {DegradingSanityPower:diff()} [gold]Paranoia[/gold] to ALL enemies.",
   "THEFACELESS-DEGRADING_SANITY.title": "Degrading Sanity",
-  "THEFACELESS-NO_EYES.description": "Whenever you apply [gold]Paranoia[/gold]\\n[gold]Draw[/gold] a card.",
+  "THEFACELESS-NO_EYES.description": "Whenever you apply [gold]Paranoia[/gold] to an enemy\\n[gold]Draw[/gold] a card.",
   "THEFACELESS-NO_EYES.title": "No Eyes",
   "THEFACELESS-FROM_THE_ARK.description": "Add a random {IfUpgraded:show:[gold]Upgraded[/gold]|} card enchanted with [purple]Déjà vu[/purple] to your hand, it's free to play this turn.",
   "THEFACELESS-FROM_THE_ARK.title": "From the Ark",
