@@ -29,11 +29,18 @@ public class CoughingFit : TheFacelessCard
 	{
 		CoughingFit card = this;
 		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		if (card.CurrentTarget != null)
+			await PowerCmd.Apply<Corruption>(choiceContext, card.CurrentTarget, DynamicVars["Corruption"].BaseValue,
+				Owner.Creature, this);
+		else
+		{
+			await PowerCmd.Apply<Corruption>(choiceContext, Owner.Creature, DynamicVars["Corruption"].BaseValue,
+				Owner.Creature, this);
+		}
 	}
 
 	protected override void OnUpgrade()
 	{
-		((CardModel)this).RemoveKeyword((CardKeyword)1);
+		RemoveKeyword((CardKeyword)1);
 	}
 }

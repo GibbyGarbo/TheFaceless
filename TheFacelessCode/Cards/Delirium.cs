@@ -30,7 +30,15 @@ public class Delirium : TheFacelessCard
 	{
 		Delirium card = this;
 		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, DynamicVarSetExtensions.Power<Corruption>(((CardModel)this).DynamicVars).BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		if (CurrentTarget != null)
+			await PowerCmd.Apply<Corruption>(choiceContext, CurrentTarget,
+				DynamicVarSetExtensions.Power<Corruption>(((CardModel)this).DynamicVars).BaseValue,
+				((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		else
+		{
+			await PowerCmd.Apply<Corruption>(choiceContext, Owner.Creature, DynamicVars["Corruption"].BaseValue,
+				Owner.Creature, this);
+		}
 	}
 
 	protected override void OnUpgrade()

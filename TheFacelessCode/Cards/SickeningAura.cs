@@ -34,7 +34,17 @@ public class SickeningAura : TheFacelessCard
 		SickeningAura card = this;
 		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		await CreatureCmd.GainBlock(((CardModel)this).Owner.Creature, ((CardModel)this).DynamicVars.Block, play, false);
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		if (card.CurrentTarget != null)
+		{
+			await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget,
+				((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature,
+				(CardModel)(object)this, false);
+		}
+		else
+		{
+			await PowerCmd.Apply<Corruption>(choiceContext, Owner.Creature, DynamicVars["Corruption"].BaseValue,
+				Owner.Creature, this);
+		}
 	}
 
 	protected override void OnUpgrade()

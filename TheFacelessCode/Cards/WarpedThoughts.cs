@@ -31,7 +31,15 @@ public class WarpedThoughts : TheFacelessCard
 		WarpedThoughts cardSource = this;
 		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)cardSource).CurrentTarget, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		if (CurrentTarget != null)
+			await PowerCmd.Apply<Corruption>(choiceContext, CurrentTarget,
+				((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature,
+				(CardModel)(object)this, false);
+		else
+		{
+			await PowerCmd.Apply<Corruption>(choiceContext, Owner.Creature, DynamicVars["Corruption"].BaseValue,
+				Owner.Creature, this);
+		}
 		await CardPileCmd.Draw(choiceContext, ((DynamicVar)((CardModel)cardSource).DynamicVars.Cards).BaseValue, ((CardModel)cardSource).Owner, false);
 	}
 
