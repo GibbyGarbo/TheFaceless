@@ -41,7 +41,10 @@ public class PlayWithFire() : TheFacelessCard(2,
         PlayWithFire source = this;
         EnchantmentModel playWithFire = ModelDb.Enchantment<DejaVu>();
         
-        
+        ArgumentNullException.ThrowIfNull(play.Target);
+        await DamageCmd.Attack(source.DynamicVars.Damage.BaseValue).FromCard(source, play).Targeting(play.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
         
         CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 0, 2);
         ((PileType)6).GetPile(source.Owner).Cards.Where(playWithFire.CanEnchant).ToList();

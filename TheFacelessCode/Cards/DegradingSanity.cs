@@ -24,7 +24,7 @@ public class DegradingSanity : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		DegradingSanity card = this;
-		PowerCmd.Apply<DegradingSanityPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["DegradingSanityPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		await PowerCmd.Apply<DegradingSanityPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["DegradingSanityPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 	}
 
 	protected override void OnUpgrade()

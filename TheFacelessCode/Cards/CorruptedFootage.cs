@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,7 +5,6 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using TheFaceless.TheFacelessCode.Powers;
 
 namespace TheFaceless.TheFacelessCode.Cards;
@@ -25,13 +22,20 @@ public class CorruptedFootage : TheFacelessCard
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
-		CorruptedFootage card = this;
-		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-		await PowerCmd.Apply<Corruption>(choiceContext, card.Owner.Creature, this.DynamicVars["Corruption"].BaseValue, this.Owner.Creature, this);
-		foreach (Creature hittableEnemy in card.CombatState.HittableEnemies)
-		{
-			await PowerCmd.Apply<Corruption>(choiceContext, hittableEnemy, this.DynamicVars["Corruption"].BaseValue, this.Owner.Creature, this);
-		}
+		if (CombatState != null)
+			foreach (Creature creature in CombatState.PlayerCreatures
+				         .Where(c => c.IsAlive).ToList())
+			{
+				await PowerCmd.Apply<Corruption>(choiceContext, creature,
+					DynamicVars.Power<Corruption>().BaseValue, Owner.Creature, this);
+			}
+
+		if (CombatState != null)
+			foreach (Creature hittableEnemy in CombatState.HittableEnemies)
+			{
+				await PowerCmd.Apply<Corruption>(choiceContext, hittableEnemy,
+					DynamicVars.Power<Corruption>().BaseValue, Owner.Creature, this);
+			}
 	}
 
 	protected override void OnUpgrade()

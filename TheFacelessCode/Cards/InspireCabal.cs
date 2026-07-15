@@ -36,7 +36,7 @@ public class InspireCabal : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		InspireCabal card = this;
-		PowerCmd.Apply<InspireCabalPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["InspireCabalPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		await PowerCmd.Apply<InspireCabalPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["InspireCabalPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["Corruption"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 		foreach (Creature hittableEnemy in ((CardModel)card).CombatState.HittableEnemies)
 		{

@@ -30,15 +30,21 @@ public class Whiplash() : TheFacelessCard(4,
     {
         Whiplash card = this;
         await CreatureCmd.TriggerAnim(card.Owner.Creature, "Cast", card.Owner.Character.AttackAnimDelay);
-        DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard(card, play).TargetingAllOpponents(card.CombatState)
-            .Execute(choiceContext);
         if (card.CombatState != null)
         {
-            foreach (Creature hittableEnemy in card.CombatState.HittableEnemies)
+            await DamageCmd.Attack(card.DynamicVars.Damage.BaseValue).FromCard(card, play)
+                .TargetingAllOpponents(card.CombatState)
+                .Execute(choiceContext);
+            if (card.CombatState != null)
             {
-                    NCombatRoom instance = NCombatRoom.Instance;
-                    instance.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(hittableEnemy));
-                
+                foreach (Creature hittableEnemy in card.CombatState.HittableEnemies)
+                {
+                    if (NCombatRoom.Instance != null)
+                    {
+                        NCombatRoom instance = NCombatRoom.Instance;
+                        instance.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(hittableEnemy));
+                    }
+                }
             }
         }
     }

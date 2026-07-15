@@ -25,12 +25,16 @@ public class StaringBack : TheFacelessCard
 	{
 		StaringBack card = this;
 		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-		int playerCorruption = ((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>();
-		int enemyCorruption = ((CardModel)card).CurrentTarget.GetPowerAmount<Corruption>();
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, (decimal)(-enemyCorruption), ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).CurrentTarget, (decimal)playerCorruption, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).Owner.Creature, (decimal)(-playerCorruption), ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
-		await PowerCmd.Apply<Corruption>(choiceContext, ((CardModel)card).Owner.Creature, (decimal)enemyCorruption, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		int playerCorruption = card.Owner.Creature.GetPowerAmount<Corruption>();
+		var currentTarget = card.CurrentTarget;
+		if (currentTarget != null)
+		{
+			int enemyCorruption = currentTarget.GetPowerAmount<Corruption>();
+			await PowerCmd.Apply<Corruption>(choiceContext, currentTarget, -enemyCorruption, Owner.Creature, this);
+			await PowerCmd.Apply<Corruption>(choiceContext, currentTarget, playerCorruption, Owner.Creature, this);
+			await PowerCmd.Apply<Corruption>(choiceContext, card.Owner.Creature, -playerCorruption, Owner.Creature, this);
+			await PowerCmd.Apply<Corruption>(choiceContext, card.Owner.Creature, enemyCorruption, Owner.Creature, this);
+		}
 	}
 
 	protected override void OnUpgrade()

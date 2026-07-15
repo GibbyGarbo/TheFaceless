@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Combat;
+﻿using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -8,6 +9,7 @@ using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using TheFaceless.TheFacelessCode.Enchantments;
+using TheFaceless.TheFacelessCode.Extensions;
 using TheFaceless.TheFacelessCode.Powers;
 
 namespace TheFaceless.TheFacelessCode.Powers;
@@ -15,6 +17,10 @@ namespace TheFaceless.TheFacelessCode.Powers;
 
 public class OperatorFormPower() : TheFacelessPower
 {
+    public override string CustomPackedIconPath => (Id.Entry.RemovePrefix().ToLowerInvariant() + "_Small.png").PowerImagePath();
+
+    public override string CustomBigIconPath => (Id.Entry.RemovePrefix().ToLowerInvariant() + "_Big.png").BigPowerImagePath();
+    
     public override PowerType Type =>
         PowerType.Buff;
 

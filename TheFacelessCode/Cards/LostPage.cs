@@ -55,7 +55,7 @@ public class LostPage() : TheFacelessCard(1,
                      CardCmd.Enchant<DejaVu>(clone, 1);
                  }
 
-                 CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(clone, PileType.Discard, card.Owner), 1f);
+                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(clone, PileType.Discard, card.Owner), 1f);
                 
         }
         else

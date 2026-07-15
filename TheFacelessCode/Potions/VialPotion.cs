@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using TheFaceless.TheFacelessCode.Character;
+using TheFaceless.TheFacelessCode.Extensions;
 using TheFaceless.TheFacelessCode.Powers;
 
 namespace TheFaceless.TheFacelessCode.Potions;
@@ -18,6 +19,8 @@ namespace TheFaceless.TheFacelessCode.Potions;
 [Pool(typeof(TheFacelessPotionPool))]
 public class VialPotion : CustomPotionModel
 {
+    public override string CustomPackedImagePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionImagePath();
+    public override string CustomPackedOutlinePath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".PotionImagePath();
     public override PotionRarity Rarity => PotionRarity.Common;
 
     public override PotionUsage Usage => PotionUsage.CombatOnly;

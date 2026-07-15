@@ -25,7 +25,7 @@ public class WanderOff : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		WanderOff card = this;
-		PowerCmd.Apply<WanderOffPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["WanderOffPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		await PowerCmd.Apply<WanderOffPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["WanderOffPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 	}
 
 	protected override void OnUpgrade()

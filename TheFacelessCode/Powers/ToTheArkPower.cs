@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,17 +10,23 @@ using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using TheFaceless.TheFacelessCode.Enchantments;
+using TheFaceless.TheFacelessCode.Extensions;
 
 namespace TheFaceless.TheFacelessCode.Powers;
 
 public class ToTheArkPower : TheFacelessPower
 {
+	public override string CustomPackedIconPath => (Id.Entry.RemovePrefix().ToLowerInvariant() + "_Small.png").PowerImagePath();
+
+	public override string CustomBigIconPath => (Id.Entry.RemovePrefix().ToLowerInvariant() + "_Big.png").BigPowerImagePath();
+	
 	public override PowerType Type => (PowerType)1;
 
 	public override PowerStackType StackType => (PowerStackType)1;
 
 	public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
 	{
+		
 		ToTheArkPower toTheArkPower = this;
 		ModelDb.Enchantment<DejaVu>();
 		if (player != ((PowerModel)toTheArkPower).Owner.Player)

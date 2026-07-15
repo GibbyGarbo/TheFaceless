@@ -21,7 +21,7 @@ public class NoEyes : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		NoEyes card = this;
-		PowerCmd.Apply<NoEyesPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["NoEyesPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		await PowerCmd.Apply<NoEyesPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["NoEyesPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 	}
 
 	protected override void OnUpgrade()

@@ -42,7 +42,7 @@ public class Inescapable : TheFacelessCard
 		int sickening = ((CardModel)card1).Owner.Creature.GetPowerAmount<Corruption>();
 		if (((CardModel)card1).IsUpgraded)
 		{
-			CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
+			CardSelectorPrefs prefs =  new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
 			CardModel card2 = (await CardSelectCmd.FromCombatPile(choiceContext, PileTypeExtensions.GetPile((PileType)3, ((CardModel)card1).Owner), ((CardModel)card1).Owner, prefs)).FirstOrDefault();
 			if (card2 != null)
 			{

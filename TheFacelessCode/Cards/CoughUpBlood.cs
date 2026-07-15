@@ -22,7 +22,7 @@ public class CoughUpBlood : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		CoughUpBlood card = this;
-		PowerCmd.Apply<CoughUpBloodPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["CoughUpBloodPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		await PowerCmd.Apply<CoughUpBloodPower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["CoughUpBloodPower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 	}
 
 	protected override void OnUpgrade()

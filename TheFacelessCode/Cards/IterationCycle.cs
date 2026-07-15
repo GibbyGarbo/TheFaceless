@@ -37,7 +37,7 @@ public class IterationCycle : TheFacelessCard
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		IterationCycle card = this;
-		PowerCmd.Apply<IterationCyclePower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["IterationCyclePower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
+		await PowerCmd.Apply<IterationCyclePower>(choiceContext, ((CardModel)card).Owner.Creature, ((CardModel)this).DynamicVars["IterationCyclePower"].BaseValue, ((CardModel)this).Owner.Creature, (CardModel)(object)this, false);
 	}
 
 	protected override void OnUpgrade()

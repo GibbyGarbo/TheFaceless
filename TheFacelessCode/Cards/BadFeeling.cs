@@ -27,6 +27,22 @@ public class BadFeeling : TheFacelessCard
 		HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
 	];
 	
+	protected override bool ShouldGlowGoldInternal
+	{
+		get
+		{
+			if (((CardModel)this).CombatState != null)
+			{
+				return ((CardModel)this).CombatState.HittableEnemies.Any(delegate(Creature e)
+				{
+					MonsterModel monster = e.Monster;
+					return monster != null && !monster.IntendsToAttack;
+				});
+			}
+			return false;
+		}
+	}
+	
 	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
 	public BadFeeling()
