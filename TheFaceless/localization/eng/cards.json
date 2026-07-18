@@ -109,7 +109,7 @@
   "THEFACELESS-ARRHYTHMIA.title": "Arrhythmia",
   "THEFACELESS-TREPIDATION_WAVE.description": "Deal {Damage:diff()} damage and\\napply {Paranoia:diff()} [gold]Paranoia[/gold] to\\nALL enemies.",
   "THEFACELESS-TREPIDATION_WAVE.title": "Trepidation Wave",
-  "THEFACELESS-SEIZURE.description": "Deal {CalculationBase:diff()} damage.\\n Deals {ExtraDamage} additional damage\\nfor every {EveryNum:diff()} [gold]Corruption[/gold] on the enemy.",
+  "THEFACELESS-SEIZURE.description": "Deal {CalculationBase:diff()} damage.\\n Deals {ExtraDamage} additional damage\\nfor every {EveryNum:diff()} [gold]Corruption[/gold] on the enemy.{IsTargeting:\n({CalculatedDamage:diff()})|}",
   "THEFACELESS-SEIZURE.title": "Seizure",
   "THEFACELESS-EVER_PRESENT.description": "Apply {Paranoia:diff()} [gold]Paranoia[/gold]\\nGain {Energy:energyIcons()}",
   "THEFACELESS-EVER_PRESENT.title": "Ever Present",

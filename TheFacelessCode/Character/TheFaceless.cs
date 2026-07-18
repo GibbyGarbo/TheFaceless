@@ -79,4 +79,6 @@ public class TheFaceless : PlaceholderCharacterModel
 	public override string CustomEnergyCounterPath => "res://TheFaceless/images/EnergyCounter/energy_control.tscn";
 
 	public override Color EnergyLabelOutlineColor => new Color("404040");
+
+	public override string CustomCastSfx => "res://TheFaceless/Sfx/cast.mp3";
 }

@@ -11,37 +11,32 @@ using TheFaceless.TheFacelessCode.Powers;
 
 namespace TheFaceless.TheFacelessCode.Cards;
 
-public class ManInTheSuit : TheFacelessCard
+public class ManInTheSuit() : TheFacelessCard(0, (CardType)2, (CardRarity)3, (TargetType)1)
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("EveryNum", 13m)];
+	protected override IEnumerable<DynamicVar> CanonicalVars => [new("EveryNum", 12m)];
 
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => (IEnumerable<IHoverTip>)(object)new IHoverTip[3]
-	{
-		HoverTipFactory.FromPower<Corruption>((int?)null),
-		HoverTipFactory.FromPower<StrengthPower>((int?)null),
+	protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+	[
+		HoverTipFactory.FromPower<Corruption>(),
+		HoverTipFactory.FromPower<StrengthPower>(),
 		HoverTipFactory.FromKeyword((CardKeyword)1)
-	};
+	];
 
 	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-
-	public ManInTheSuit()
-		: base(0, (CardType)2, (CardRarity)3, (TargetType)1)
-	{
-	}
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
 	{
 		ManInTheSuit card = this;
 		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-		decimal calculatedStrength = (decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() / ((CardModel)this).DynamicVars["EveryNum"].BaseValue;
-		if ((decimal)((CardModel)card).Owner.Creature.GetPowerAmount<Corruption>() >= ((CardModel)this).DynamicVars["EveryNum"].BaseValue)
+		decimal calculatedStrength = card.Owner.Creature.GetPowerAmount<Corruption>() / DynamicVars["EveryNum"].BaseValue;
+		if (card.Owner.Creature.GetPowerAmount<Corruption>() >= DynamicVars["EveryNum"].BaseValue)
 		{
-			await PowerCmd.Apply<StrengthPower>(choiceContext, ((CardModel)card).Owner.Creature, calculatedStrength, ((CardModel)card).Owner.Creature, (CardModel)(object)card, false);
+			await PowerCmd.Apply<StrengthPower>(choiceContext, card.Owner.Creature, calculatedStrength, card.Owner.Creature, card);
 		}
 	}
 
 	protected override void OnUpgrade()
 	{
-		((CardModel)this).DynamicVars["EveryNum"].UpgradeValueBy(-5m);
+		DynamicVars["EveryNum"].UpgradeValueBy(-4m);
 	}
 }

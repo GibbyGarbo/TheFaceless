@@ -62,6 +62,7 @@
     <ItemGroup>
         <Folder Include="TheFaceless\images\powers\big\"/>
         <Folder Include="TheFaceless\images\relics\big\"/>
+        <Folder Include="TheFaceless\Sfx\" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">

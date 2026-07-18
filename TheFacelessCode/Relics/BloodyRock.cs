@@ -29,7 +29,7 @@ public class BloodyRock : TheFacelessRelic
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!((cardPlay.Card.Owner == Owner) & !(cardPlay.Card.Enchantment is DejaVu)))
+        if (cardPlay.Card.Owner == Owner && cardPlay.Card.Enchantment is DejaVu)
         {
             Flash();
             if (Owner.Creature.CombatState != null)

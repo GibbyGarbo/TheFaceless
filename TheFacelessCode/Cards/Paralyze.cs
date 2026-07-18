@@ -21,11 +21,9 @@ public class Paralyze() : TheFacelessCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new CalculationBaseVar(0m),
         new ExtraDamageVar(1m),
-        new CalculatedDamageVar((ValueProp)12).WithMultiplier((_, target) => target.GetPowerAmount<Corruption>()),
         new PowerVar<Corruption>(8m),
         new DynamicVar("CorruptionInt", 8m),
         new CalculationExtraVar(1m),
-        new CalculatedVar("CalculatedCorruption").WithMultiplier((card, target) => Math.Floor((target.GetPowerAmount<Corruption>()) + card.DynamicVars["CorruptionInt"].BaseValue))
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<Corruption>()];
@@ -45,7 +43,7 @@ public class Paralyze() : TheFacelessCard(1,
             {
                 await PowerCmd.Apply<Corruption>(choiceContext, creature,
                     DynamicVars.Power<Corruption>().BaseValue, Owner.Creature, this);
-                int blockGain = card.Owner.Creature.GetPowerAmount<Corruption>();
+                int blockGain = creature.GetPowerAmount<Corruption>();
                 await CreatureCmd.GainBlock(creature, blockGain, (ValueProp)8, play);
             }
 
@@ -54,8 +52,9 @@ public class Paralyze() : TheFacelessCard(1,
             {
                 await PowerCmd.Apply<Corruption>(choiceContext, hittableEnemy,
                     DynamicVars.Power<Corruption>().BaseValue, Owner.Creature, this);
+                int damage = hittableEnemy.GetPowerAmount<Corruption>();
                 await CreatureCmd.Damage(choiceContext, hittableEnemy,
-                    DynamicVars.CalculatedDamage.Calculate(hittableEnemy), (ValueProp)12, card, play);
+                    damage, (ValueProp)12, card, play);
             }
         }
     }
